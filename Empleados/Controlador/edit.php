@@ -19,13 +19,12 @@ if ($_POST) {
 
         $modeloEmpleado->update($id, $nombre, $correo, $sexo, $area_id, $boletin, $descripcion);
 
-        // Redirigir con mensaje de éxito
         header('Location: ../../index.php?mensaje=success&accion=editar');
-        exit; // Detener la ejecución
+        exit;
     } catch (Exception $e) {
-        // Redirigir con mensaje de error
+
         header('Location: ../../index.php?mensaje=error&accion=editar&detalle=' . urlencode($e->getMessage()));
-        exit; // Detener la ejecución
+        exit;
     }
 } else {
     header('Location: ../../index.php');

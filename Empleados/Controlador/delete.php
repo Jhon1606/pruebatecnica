@@ -7,16 +7,15 @@ if ($_POST) {
 
         $id = $_POST['id'];
         $modeloEmpleado->delete($id);
+        $modeloEmpleado->deleteEmpleadoRol($id);
 
-        // Redirigir con mensaje de éxito
         header('Location: ../../index.php?mensaje=success&accion=eliminar');
-        exit; // Detener la ejecución
+        exit;
     } catch (Exception $e) {
-        // Redirigir con mensaje de error
         header('Location: ../../index.php?mensaje=error&accion=eliminar&detalle=' . urlencode($e->getMessage()));
-        exit; // Detener la ejecución
+        exit;
     }
 } else {
     header('Location: ../../index.php');
-    exit; // Detener la ejecución
+    exit;
 }

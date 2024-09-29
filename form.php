@@ -35,7 +35,6 @@ $roles = $modeloEmpleado->getRoles();
         </div>
 
         <form id="empleadoForm" action="Empleados/Controlador/add.php" method="POST">
-            <!-- Campo de Nombre Completo -->
             <div class="mb-3 form-group row">
                 <label class="col-sm-3 col-form-label derecha" for="nombre" class="col-sm-3 col-form-label">Nombre completo *</label>
                 <div class="col-sm-9">
@@ -44,7 +43,6 @@ $roles = $modeloEmpleado->getRoles();
                 </div>
             </div>
 
-            <!-- Campo de Correo -->
             <div class="mb-3 text-right form-group row">
                 <label class="col-sm-3 col-form-label derecha" for="correo" class="col-sm-3 col-form-label">Correo *</label>
                 <div class="col-sm-9">
@@ -53,7 +51,6 @@ $roles = $modeloEmpleado->getRoles();
                 </div>
             </div>
 
-            <!-- Campo de Sexo -->
             <fieldset class="mb-3 text-right form-group">
                 <div class="row">
                     <legend class="col-form-label col-sm-3 pt-0 derecha">Sexo *</legend>
@@ -75,7 +72,6 @@ $roles = $modeloEmpleado->getRoles();
                 </div>
             </fieldset>
 
-            <!-- Campo de Área (Checkbox) -->
             <div class="mb-3 text-right form-group row">
                 <label class="col-sm-3 col-form-label derecha">Área *</label>
                 <div class="col-sm-9">
@@ -98,7 +94,6 @@ $roles = $modeloEmpleado->getRoles();
                 </div>
             </div>
 
-            <!-- Campo de Descripción -->
             <div class="mb-3 text-right form-group row">
                 <label class="col-sm-3 col-form-label derecha" for="descripcion" class="col-sm-3 col-form-label">Descripción *</label>
                 <div class="col-sm-9">
@@ -113,7 +108,6 @@ $roles = $modeloEmpleado->getRoles();
                 </div>
             </div>
 
-            <!-- Campo de Roles -->
             <fieldset class="mb-3 text-right form-group">
                 <div class="row">
                     <label class="col-form-label col-sm-3 pt-0 derecha">Roles *</label>
@@ -137,7 +131,6 @@ $roles = $modeloEmpleado->getRoles();
                 </div>
             </fieldset>
 
-            <!-- Botón de Enviar -->
             <div class="mb-3 text-right form-group row">
                 <div class="col-sm-9 offset-sm-3">
                     <button type="submit" class="btn btn-primary">Enviar</button>

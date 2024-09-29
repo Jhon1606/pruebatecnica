@@ -6,7 +6,6 @@
                 <h5 class="modal-title" id="exampleModalLabel">Editar Empleado</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <!-- Formulario -->
             <form action="/PruebaTecnica/Empleados/Controlador/edit.php" method="POST">
                 <div class="modal-body">
                     <input type="hidden" id="ideditar" name="id">
@@ -17,7 +16,6 @@
                         </div>
                     </div>
 
-                    <!-- Campo de Correo -->
                     <div class="mb-3 text-right form-group row">
                         <label class="col-sm-3 col-form-label derecha" for="correo" class="col-sm-3 col-form-label">Correo</label>
                         <div class="col-sm-9">
@@ -45,7 +43,6 @@
                         </div>
                     </fieldset>
 
-                    <!-- Campo de Área (Checkbox) -->
                     <div class="mb-3 text-right form-group row">
                         <label class="col-sm-3 col-form-label derecha">Área</label>
                         <div class="col-sm-9">
@@ -66,7 +63,6 @@
                         </div>
                     </div>
 
-                    <!-- Campo de Descripción -->
                     <div class="mb-3 text-right form-group row">
                         <label class="col-sm-3 col-form-label derecha" for="descripcion" class="col-sm-3 col-form-label">Descripción</label>
                         <div class="col-sm-9">
@@ -79,6 +75,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar</button>

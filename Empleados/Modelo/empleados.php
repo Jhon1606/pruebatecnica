@@ -45,20 +45,6 @@ class empleado extends conexion
         }
     }
 
-    // public function get()
-    // {
-    //     $rows = null;
-    //     $statement = $this->conexion->prepare("SELECT a.nombre, a.email,  b.nombre_departamento AS departamento, a.nombre_ciudad 
-    //                                         FROM empleados AS a
-    //                                         INNER JOIN departamento AS b 
-    //                                         WHERE a.id_departamento = b.id_departamento");
-    //     $statement->execute();
-    //     while ($result = $statement->fetch()) {
-    //         $rows[] = $result;
-    //     }
-    //     return $rows;
-    // }
-
     public function getEmpleados()
     {
         $rows = null;
@@ -93,17 +79,6 @@ class empleado extends conexion
         return $rows;
     }
 
-    // public function existe($codigo){
-    //     $statement = $this->conexion->prepare("SELECT COUNT(*) FROM ubicacion WHERE codigo = :codigo");
-    //     $statement->bindParam(":codigo",$codigo);
-    //     $statement->execute();
-    //     if($statement->fetchColumn()>0){
-    //         create_flash_message("Error", "El código existe","error");
-    //         header('Location: ../Vista/index.php');
-    //     }
-    //     return false;
-    // }
-
     public function getById($id)
     {
         $rows = null;
@@ -115,6 +90,18 @@ class empleado extends conexion
         }
         return $rows;
     }
+
+    // public function getRolesEmpleado($id)
+    // {
+    //     $rows = null;
+    //     $statement = $this->conexion->prepare("SELECT * FROM empleado_id WHERE empleado_id=:id");
+    //     $statement->bindParam(":id", $id);
+    //     $statement->execute();
+    //     while ($result = $statement->fetch()) {
+    //         $rows[] = $result;
+    //     }
+    //     return $rows;
+    // }
 
     public function update($id, $nombre, $email, $sexo, $area_id, $boletin, $descripcion)
     {
@@ -141,6 +128,17 @@ class empleado extends conexion
     public function delete($id)
     {
         $statement = $this->conexion->prepare("DELETE FROM empleados WHERE id = :id");
+        $statement->bindParam(":id", $id);
+        if ($statement->execute()) {
+            header('Location: ../../index.php');
+        } else {
+            header('Location: ../../form.php');
+        }
+    }
+
+    public function deleteEmpleadoRol($id)
+    {
+        $statement = $this->conexion->prepare("DELETE FROM empleado_rol WHERE empleado_id = :id");
         $statement->bindParam(":id", $id);
         if ($statement->execute()) {
             header('Location: ../../index.php');

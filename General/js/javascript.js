@@ -1,59 +1,50 @@
 $(document).ready(function() {
     $('#empleadoForm').on('submit', function(e) {
-        e.preventDefault(); // Evita el envío del formulario
+        e.preventDefault(); 
 
-        // Limpia mensajes de error previos
         $('.error-message').text("");
 
-        // Inicializa un flag para validar
         let isValid = true;
 
-        // Validar el nombre
         const nombre = $('#nombre').val().trim();
         if (nombre === "") {
             isValid = false;
             $('#error-nombre').text("El nombre no puede estar vacío, por favor ingrese un nombre.");
         }
 
-        // Validar el correo
         const correo = $('#correo').val().trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regex básico para validar el correo
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
         if (correo === "" || !emailRegex.test(correo)) {
             isValid = false;
             $('#error-correo').text("Ingrese un correo electrónico válido.");
         }
 
-        // Validar el sexo
         const sexo = $('input[name="sexo"]:checked').val();
         if (!sexo) {
             isValid = false;
             $('#error-sexo').text("Seleccione un sexo.");
         }
 
-        // Validar el área
         const area_id = $('select[name="area_id"]').val();
         if (!area_id) {
             isValid = false;
             $('#error-area').text("Seleccione un área.");
         }
 
-        // Validar la descripción
         const descripcion = $('#descripcion').val().trim();
         if (descripcion === "") {
             isValid = false;
             $('#error-descripcion').text("La descripción no puede estar vacía, por favor ingrese una descripción.");
         }
 
-        // Validar los roles
         const roles = $('input[name="rol[]"]:checked');
         if (roles.length === 0) {
             isValid = false;
             $('#error-roles').text("Seleccione al menos un rol.");
         }
-
-        // Si todo es válido, envía el formulario, de lo contrario muestra los errores
+        
         if (isValid) {
-            this.submit(); // Envía el formulario
+            this.submit(); 
         }
     });
 });
@@ -80,7 +71,6 @@ function modalEditarEmpleado(id){
         $("#email").val(email);
         $("#sexo").val(sexo);
         $("#area_id").val(area_id);
-        // $("#boletin").val(boletin);
         if (boletin === 1) {
             $("#boletin").prop("checked", true);
         } else {

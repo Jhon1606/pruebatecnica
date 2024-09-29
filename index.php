@@ -4,7 +4,6 @@ require_once('Empleados/Modelo/empleados.php');
 $modeloEmpleado = new empleado();
 $empleados = $modeloEmpleado->getEmpleados();
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,7 +93,6 @@ $empleados = $modeloEmpleado->getEmpleados();
     require_once('../PruebaTecnica/Empleados/Vista/edit.php');
     require_once('../PruebaTecnica/Empleados/Vista/delete.php');
     ?>
-
     <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] == 'success'): ?>
         <script>
             let mensaje = "El registro se realizó con éxito.";
@@ -116,7 +114,6 @@ $empleados = $modeloEmpleado->getEmpleados();
             swal("¡Error!", detalle, "error");
         </script>
     <?php endif; ?>
-
 
 </body>
 
