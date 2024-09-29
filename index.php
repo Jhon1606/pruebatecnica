@@ -14,12 +14,12 @@ $empleados = $modeloEmpleado->getEmpleados();
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="General/css/style.css">
-    <script src="General/js/javascript.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="noopener"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="General/js/javascript.js"></script>
+    <link rel="stylesheet" href="General/css/style.css">
 </head>
 
 <body>
@@ -93,6 +93,7 @@ $empleados = $modeloEmpleado->getEmpleados();
     require_once('../PruebaTecnica/Empleados/Vista/edit.php');
     require_once('../PruebaTecnica/Empleados/Vista/delete.php');
     ?>
+
     <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] == 'success'): ?>
         <script>
             let mensaje = "El registro se realizó con éxito.";
@@ -104,14 +105,32 @@ $empleados = $modeloEmpleado->getEmpleados();
                     mensaje = "¡Éxito! El empleado fue eliminado con éxito.";
                 }
             <?php endif; ?>
-            swal("¡Éxito!", mensaje, "success");
+            Swal.fire({
+                title: '¡Éxito!',
+                text: mensaje,
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                setTimeout(() => {
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                }, 500);
+            });
         </script>
     <?php endif; ?>
 
     <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] == 'error'): ?>
         <script>
             let detalle = "<?php echo isset($_GET['detalle']) ? $_GET['detalle'] : 'Ocurrió un error.'; ?>";
-            swal("¡Error!", detalle, "error");
+            Swal.fire({
+                title: '¡Error!',
+                text: detalle,
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                setTimeout(() => {
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                }, 500);
+            });
         </script>
     <?php endif; ?>
 
