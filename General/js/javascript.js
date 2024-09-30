@@ -49,7 +49,6 @@ $(document).ready(function() {
     });
 });
 
-
 function modalEditarEmpleado(id){
     $.ajax({
         url: "/PruebaTecnica/General/Queries/infoempleado.php",
@@ -65,6 +64,7 @@ function modalEditarEmpleado(id){
         var area_id = info[0].area_id;
         var boletin = info[0].boletin;
         var descripcion = info[0].descripcion;
+        var roles = info[0].roles;
 
         $("#ideditar").val(id);
         $("#nombre").val(nombre);
@@ -82,6 +82,15 @@ function modalEditarEmpleado(id){
             $("#masculino").prop("checked", true);
         }
         $("#descripcion").val(descripcion);
+         // Limpiar los checkboxes de roles
+        $('input[name="rol[]"]').prop('checked', false);
+
+        // Marcar los checkboxes de roles según los roles del empleado
+        if (roles && roles.length > 0) {
+            roles.forEach(function(rolId) {
+                $('#rol-' + rolId).prop('checked', true);
+            });
+        }
         $('#myModalEditarEmpleado').modal('show');
     });
 }

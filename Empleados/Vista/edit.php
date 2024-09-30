@@ -76,6 +76,30 @@
                         </div>
                     </div>
 
+                    <fieldset class="mb-3 text-right form-group">
+                        <div class="row">
+                            <label class="col-form-label col-sm-3 pt-0 derecha">Roles *</label>
+                            <div class="col-sm-9">
+                                <div class="form-check">
+                                    <?php $roles = $modeloEmpleado->getRoles(); ?>
+                                    <?php if (!empty($roles)): ?>
+                                        <?php foreach ($roles as $rol): ?>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="rol[]" id="rol-<?php echo $rol['id']; ?>" value="<?php echo $rol['id']; ?>">
+                                                <label class="form-check-label" for="rol-<?php echo $rol['id']; ?>">
+                                                    <?php echo $rol['nombre']; ?>
+                                                </label>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <p>No hay roles disponibles.</p>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="text-danger error-message" id="error-roles"></div>
+                            </div>
+                        </div>
+                    </fieldset>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar</button>

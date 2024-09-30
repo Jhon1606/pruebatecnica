@@ -6,6 +6,7 @@ $arreglo = array();
 
 $modeloEmpleado = new empleado();
 $informacionEmpleado = $modeloEmpleado->getById($id);
+$infoRolEmpleado = $modeloEmpleado->getEmpleadoRol($id);
 
 if ($informacionEmpleado != null) {
 
@@ -19,6 +20,7 @@ if ($informacionEmpleado != null) {
             "area_id" => $infoEmpleado["area_id"],
             "boletin" => $infoEmpleado["boletin"],
             "descripcion" => $infoEmpleado["descripcion"],
+            "roles" => $infoRolEmpleado,
         );
     }
 }

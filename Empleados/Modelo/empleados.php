@@ -91,17 +91,17 @@ class empleado extends conexion
         return $rows;
     }
 
-    // public function getRolesEmpleado($id)
-    // {
-    //     $rows = null;
-    //     $statement = $this->conexion->prepare("SELECT * FROM empleado_id WHERE empleado_id=:id");
-    //     $statement->bindParam(":id", $id);
-    //     $statement->execute();
-    //     while ($result = $statement->fetch()) {
-    //         $rows[] = $result;
-    //     }
-    //     return $rows;
-    // }
+    public function getEmpleadoRol($id)
+    {
+        $rows = null;
+        $statement = $this->conexion->prepare("SELECT * FROM empleado_rol WHERE empleado_id=:id");
+        $statement->bindParam(":id", $id);
+        $statement->execute();
+        while ($result = $statement->fetch()) {
+            $rows[] = $result['rol_id'];
+        }
+        return $rows;
+    }
 
     public function update($id, $nombre, $email, $sexo, $area_id, $boletin, $descripcion)
     {
@@ -124,6 +124,15 @@ class empleado extends conexion
             header('Location: ../../form.php');
         }
     }
+
+    // public function updateEmpleadoRol($empleado_id, $rol_id)
+    // {
+    //     $statement = $this->conexion->prepare("UPDATE empleado_rol SET rol_id=:rol_id WHERE empleado_id = :empleado_id");
+
+    //     $statement->bindParam(':empleado_id', $empleado_id);
+    //     $statement->bindParam(':rol_id', $rol_id);
+    //     $statement->execute();
+    // }
 
     public function delete($id)
     {

@@ -16,8 +16,14 @@ if ($_POST) {
             $boletin = 0;
         }
         $descripcion = $_POST['descripcion'];
+        $rol = $_POST['rol'];
 
         $modeloEmpleado->update($id, $nombre, $correo, $sexo, $area_id, $boletin, $descripcion);
+        $modeloEmpleado->deleteEmpleadoRol($id);
+        foreach ($rol as $rol_id) {
+            $modeloEmpleado->addEmpleadoRol($id, $rol_id);
+        }
+
 
         header('Location: ../../index.php?mensaje=success&accion=editar');
         exit;
